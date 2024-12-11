@@ -1,0 +1,33 @@
+#************H2  Begin****************
+spring:
+  datasource:
+    #指定数据库的种类，这里 file意思是文件型数据库
+    url: jdbc:h2:/root/web/Gomoku/h2-data
+#    url: jdbc:h2:C:/Users/20773/Documents/h2-data
+    username: sa
+    password:
+    #指定Driver，有了Driver才能访问数据库
+    driver-class-name: org.h2.Driver
+  sql:
+    init:
+      schema-locations: classpath:sql/schema.sql
+      mode: embedded
+  #插入数据的MySql语句的位置
+  #remote visit
+  h2:
+    console:
+      #console url。Spring启动后，可以访问 http://127.0.0.1:8080/h2-console 查看数据库
+      port: 8849
+      path: /h2-console
+      settings:
+        web-allow-others: true
+        trace: true
+      #default true。咱也可以用命令行访问好数据库
+      enabled: true
+
+netty:
+  websocket:
+    port: 8848
+    ip: 0.0.0.0
+    path: /ws
+    max-frame-size: 10240000
